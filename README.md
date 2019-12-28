@@ -68,10 +68,10 @@ Example playbook for installing the latest Ansible version globally:
     - role: xanmanning.azcli
 ```
 
-### Activating the Ansible venv
+### Activating the azcli venv
 
-Once logged into the controller, you need to activate the python3 virtual
-environment to be able to access Ansible. This is done as per the below:
+You need to activate the python3 virtual environment to be able to access `az`.
+This is done as per the below:
 
 ```bash
 source {{ azure_install_dir }}/{{ azure_current_dirname }}/bin/activate
