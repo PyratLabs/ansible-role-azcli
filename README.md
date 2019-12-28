@@ -32,13 +32,13 @@ my spare time so I cannot promise a speedy fix delivery.
 ## Role Variables
 
 
-| Variable                        | Description                                                                  | Default Value             |
-|---------------------------------|------------------------------------------------------------------------------|---------------------------|
-| `azcli_version`                 | Use a specific version of Ansible, eg. `2.0.78`. Specify `false` for latest. | `false`                   |
-| `azcli_install_dir`             | Installation directory to put Ansible virtual environments.                  | `$HOME/azcli`             |
-| `azcli_current_dirname`         | Name for the currently active Ansible Virtualenv.                            | current                   |
-| `azcli_install_os_dependencies` | Allow role to install OS dependencies.                                       | `false`                   |
-| `azcli_python3_path`            | Specify a path to a specific python version to use in virtualenv.            | _NULL_                    |
+| Variable                        | Description                                                                | Default Value             |
+|---------------------------------|----------------------------------------------------------------------------|---------------------------|
+| `azcli_version`                 | Use a specific version of azcli, eg. `2.0.78`. Specify `false` for latest. | `false`                   |
+| `azcli_install_dir`             | Installation directory to put azcli virtual environments.                  | `$HOME/azcli`             |
+| `azcli_current_dirname`         | Name for the currently active azcli Virtualenv.                            | current                   |
+| `azcli_install_os_dependencies` | Allow role to install OS dependencies.                                     | `false`                   |
+| `azcli_python3_path`            | Specify a path to a specific python version to use in virtualenv.          | _NULL_                    |
 
 ## Dependencies
 
@@ -54,7 +54,7 @@ Example playbook for installing to single user:
      - { role: xanmanning.azcli, azcli_version: 2.0.78 }
 ```
 
-Example playbook for installing the latest Ansible version globally:
+Example playbook for installing the latest azcli version globally:
 
 ```yaml
 ---
