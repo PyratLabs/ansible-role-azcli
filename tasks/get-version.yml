@@ -1,0 +1,12 @@
+---
+
+- name: Get the version information of the latest release of azcli
+  uri:
+    url: https://pypi.org/pypi/azure-cli/json
+    return_content: true
+    body_format: json
+  register: azcli_get_latest_version
+
+- name: Ensure the azcli_version variable is set
+  set_fact:
+    azcli_version: "{{ azcli_get_latest_version.json.info.version }}"

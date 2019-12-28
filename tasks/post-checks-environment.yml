@@ -1,0 +1,34 @@
+---
+
+- name: Check to see if the azcli version directory exists
+  stat:
+    path: "{{ azcli_install_dir }}/az-{{ azcli_version }}"
+  register: azcli_check_version_dir
+
+- name: Fail if the azcli version directory doesn't exist
+  fail:
+    msg: "{{ azcli_install_dir }}/az-{{ azcli_version }} is missing after play."
+  when: not azcli_check_version_dir.stat.exists
+
+- name: Check to see if the azcli current symlink exists
+  stat:
+    path: "{{ azcli_install_dir }}/{{ azcli_current_dirname }}"
+  register: azcli_check_symlink_dir
+
+- name: Fail if the azcli symlink directory doesn't exist
+  fail:
+    msg: "{{ azcli_install_dir }}/{{ azcli_current_dirname }} symlink not correct after play."
+  when: not azcli_check_symlink_dir.stat.exists
+        or not azcli_check_symlink_dir.stat.islnk
+        or azcli_check_symlink_dir.stat.lnk_target != (azcli_install_dir + "/az-" + azcli_version)
+
+- name: Check to see if the azcli version directory is a virtualenv
+  stat:
+    path: "{{ azcli_install_dir }}/{{ azcli_current_dirname }}/bin/activate"
+  register: azcli_check_virtualenv_dir
+
+- name: Fail if the azcli virtualenv directory doesn't exist
+  fail:
+    msg: "{{ azcli_install_dir }}/{{ azcli_current_dirname }}/bin/activate not found after play."
+  when: not azcli_check_virtualenv_dir.stat.exists
+        or not azcli_check_virtualenv_dir.stat.isreg

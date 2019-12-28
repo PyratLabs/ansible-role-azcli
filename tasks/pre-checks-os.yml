@@ -1,0 +1,49 @@
+---
+
+- name: Check that gcc is installed
+  command: which gcc
+  register: azcli_check_gcc_installed
+  failed_when: false
+  changed_when: false
+
+- name: Fail play if gcc is not installed
+  fail:
+    msg: gcc was not found, please ensure this is installed.
+  when: azcli_check_gcc_installed.rc > 0
+        and not azcli_install_os_dependencies
+
+- name: Check that Python 3 is installed
+  command: which python3
+  register: azcli_check_python_3_installed
+  failed_when: false
+  changed_when: false
+
+- name: Fail play if Python 3 is not installed
+  fail:
+    msg: Python 3 was not found, please ensure this is installed.
+  when: azcli_check_python_3_installed.rc > 0
+        and not azcli_install_os_dependencies
+
+- name: Check that pip3 is installed
+  command: which pip3
+  register: azcli_check_python_pip_installed
+  failed_when: false
+  changed_when: false
+
+- name: Fail play if pip3 is not installed
+  fail:
+    msg: pip3 was not found, please ensure this is installed.
+  when: azcli_check_python_pip_installed.rc > 0
+        and not azcli_install_os_dependencies
+
+- name: Check that python3-venv is installed
+  command: python3 -m venv --help
+  register: azcli_check_python_3_venv_installed
+  failed_when: false
+  changed_when: false
+
+- name: Fail play if python3-venv is not installed
+  fail:
+    msg: python3-venv was not found, please ensure this is installed.
+  when: azcli_check_python_3_venv_installed.rc > 0
+        and not azcli_install_os_dependencies

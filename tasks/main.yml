@@ -1,0 +1,17 @@
+---
+
+- import_tasks: pre-checks-os.yml
+
+- include_tasks: "{{ ansible_os_family | lower }}/install-os-dependencies.yml"
+  when: azcli_install_os_dependencies is defined
+        and azcli_install_os_dependencies
+
+- import_tasks: pre-checks-environment.yml
+
+- import_tasks: get-version.yml
+  when: azcli_version is not defined
+        or not azcli_version
+
+- import_tasks: install-azcli.yml
+
+- import_tasks: post-checks-environment.yml
