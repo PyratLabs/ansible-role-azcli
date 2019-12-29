@@ -1,13 +1,13 @@
 ---
 
-# Use a specific version of azcli, eg. `2.9.0`. Specify `false` for latest.
+# Use a specific version of azure-cli, eg. `2.9.0`. Specify `false` for latest.
 azcli_version: false
 
-# Installation directory to put Ansible virtual environments.
-azcli_install_dir: "{{ ansible_user_dir }}/azcli"
+# Installation directory to put azure-cli virtual environments.
+azcli_install_dir: "{{ ansible_user_dir }}/.virtualenvs"
 
-# Name for the currently active Ansible Virtualenv.
-azcli_current_dirname: current
+# Name for the currently active azure-cli Virtualenv.
+azcli_current_dirname: azure-cli
 
 # Allow role to install OS dependencies.
 azcli_install_os_dependencies: false

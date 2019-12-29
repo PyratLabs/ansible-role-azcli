@@ -4,7 +4,7 @@
   become: true
   vars:
     azcli_install_os_dependencies: true
-    azcli_install_dir: /opt/azcli/bin
+    azcli_install_dir: /opt/azure-cli/bin
     azcli_current_dirname: current
   roles:
-    - role: xanmanning.azcli
+    - role: xanmanning.azurecli

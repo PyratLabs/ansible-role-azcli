@@ -12,6 +12,6 @@
   when: azcli_version is not defined
         or not azcli_version
 
-- import_tasks: install-azcli.yml
+- import_tasks: install-azure-cli.yml
 
 - import_tasks: post-checks-environment.yml

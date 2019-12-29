@@ -1,6 +1,6 @@
-# Ansible Role: azcli
+# Ansible Role: azurecli
 
-Ansible role for installing an Azure CLI (`azcli`) into a Python3 VirtualEnv.
+Ansible role for installing an Azure CLI (`azure-cli`) into a Python3 VirtualEnv.
 
 [![Build Status](https://www.travis-ci.org/PyratLabs/ansible-role-azcli.svg?branch=master)](https://www.travis-ci.org/PyratLabs/ansible-role-azcli)
 
@@ -32,13 +32,13 @@ my spare time so I cannot promise a speedy fix delivery.
 ## Role Variables
 
 
-| Variable                        | Description                                                                | Default Value             |
-|---------------------------------|----------------------------------------------------------------------------|---------------------------|
-| `azcli_version`                 | Use a specific version of azcli, eg. `2.0.78`. Specify `false` for latest. | `false`                   |
-| `azcli_install_dir`             | Installation directory to put azcli virtual environments.                  | `$HOME/azcli`             |
-| `azcli_current_dirname`         | Name for the currently active azcli Virtualenv.                            | current                   |
-| `azcli_install_os_dependencies` | Allow role to install OS dependencies.                                     | `false`                   |
-| `azcli_python3_path`            | Specify a path to a specific python version to use in virtualenv.          | _NULL_                    |
+| Variable                        | Description                                                                    | Default Value        |
+|---------------------------------|--------------------------------------------------------------------------------|----------------------|
+| `azcli_version`                 | Use a specific version of azure-cli, eg. `2.0.78`. Specify `false` for latest. | `false`              |
+| `azcli_install_dir`             | Installation directory to put azure-cli virtual environments.                  | `$HOME/.virtualenvs` |
+| `azcli_current_dirname`         | Name for the currently active azure-cli Virtualenv.                            | azure-cli            |
+| `azcli_install_os_dependencies` | Allow role to install OS dependencies.                                         | `false`              |
+| `azcli_python3_path`            | Specify a path to a specific python version to use in virtualenv.              | _NULL_               |
 
 ## Dependencies
 
@@ -51,10 +51,10 @@ Example playbook for installing to single user:
 ```yaml
 - hosts: azcli_hosts
   roles:
-     - { role: xanmanning.azcli, azcli_version: 2.0.78 }
+     - { role: xanmanning.azurecli, azcli_version: 2.0.78 }
 ```
 
-Example playbook for installing the latest azcli version globally:
+Example playbook for installing the latest azure-cli version globally:
 
 ```yaml
 ---
@@ -62,13 +62,13 @@ Example playbook for installing the latest azcli version globally:
   become: true
   vars:
     azcli_install_os_dependencies: true
-    azcli_install_dir: /opt/azcli/bin
+    azcli_install_dir: /opt/azure-cli/bin
     azcli_current_dirname: current
   roles:
-    - role: xanmanning.azcli
+    - role: xanmanning.azurecli
 ```
 
-### Activating the azcli venv
+### Activating the azure-cli venv
 
 You need to activate the python3 virtual environment to be able to access `az`.
 This is done as per the below:
@@ -81,7 +81,7 @@ In the above example global installation playbook, this would look like the
 following:
 
 ```bash
-source /opt/azure/bin/current/bin/activate
+source /opt/azure-cli/bin/current/bin/activate
 ```
 
 ## License

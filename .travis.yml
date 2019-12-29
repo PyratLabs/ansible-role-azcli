@@ -7,7 +7,8 @@ services: docker
 
 env:
   global:
-    - ROLE_NAME: azcli
+    - REPO_NAME: azcli
+    - ROLE_NAME: azurecli
   matrix:
     # Local user install
     - MOLECULE_DISTRO: centos7
@@ -43,7 +44,7 @@ install:
 before_script:
   # Use actual Ansible Galaxy role name for the project directory.
   - cd ../
-  - mv ansible-role-$ROLE_NAME xanmanning.$ROLE_NAME
+  - mv ansible-role-$REPO_NAME xanmanning.$ROLE_NAME
   - cd xanmanning.$ROLE_NAME
 
 script:

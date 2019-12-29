@@ -1,8 +1,8 @@
 ---
 galaxy_info:
-  role_name: azcli
+  role_name: azurecli
   author: Xan Manning
-  description: Ansible Role to install Azure CLI (azcli)
+  description: Ansible Role to install Azure CLI (azure-cli)
   company: Pyrat Ltd.
 
   # If the issue tracker for your role is not on github, uncomment the
@@ -62,8 +62,9 @@ galaxy_info:
   #   - 99.99
 
   galaxy_tags:
+    - az
     - azure
-    - azcli
+    - azurecli
     - cloud
     - infrastructure
 # List tags for your role here, one per line. A tag is a keyword that describes

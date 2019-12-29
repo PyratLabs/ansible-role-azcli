@@ -4,4 +4,4 @@
   become: true
   become_user: azuser
   roles:
-    - role: xanmanning.azcli
+    - role: xanmanning.azurecli

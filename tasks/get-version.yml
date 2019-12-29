@@ -1,6 +1,6 @@
 ---
 
-- name: Get the version information of the latest release of azcli
+- name: Get the version information of the latest release of azure-cli
   uri:
     url: https://pypi.org/pypi/azure-cli/json
     return_content: true
