@@ -86,7 +86,7 @@ source /opt/azure-cli/bin/current/bin/activate
 
 ## License
 
-BSD
+[BSD 3-clause](LICENSE.txt)
 
 ## Author Information
 
