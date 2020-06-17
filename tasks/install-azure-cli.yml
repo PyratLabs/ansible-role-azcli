@@ -5,6 +5,13 @@
     path: "{{ azcli_install_dir }}"
     state: directory
 
+- name: Ensure the azure-cli bin directory exists
+  file:
+    path: "{{ azcli_bin_dir }}"
+    state: directory
+  when: azcli_install_venv_helper is defined
+        and azcli_install_venv_helper
+
 - name: Ensure Python 3 interpreter is used by Ansible
   set_fact:
     ansible_python_interpreter: "{{ azcli_python3_path }}"
@@ -33,3 +40,15 @@
     src: venv.sh.j2
     dest: "{{ azcli_install_dir }}/azure-cli-{{ azcli_version }}/bin/venv"
     mode: 0755
+  loop:
+    - python
+
+- name: Ensure venv helper exists for az in bin directory
+  template:
+    src: venv.sh.j2
+    dest: "{{ azcli_bin_dir }}/{{ item }}"
+    mode: 0755
+  loop:
+    - az
+  when: azcli_install_venv_helper is defined
+        and azcli_install_venv_helper

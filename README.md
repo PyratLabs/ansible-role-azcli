@@ -37,6 +37,8 @@ my spare time so I cannot promise a speedy fix delivery.
 | `azcli_version`                 | Use a specific version of azure-cli, eg. `2.0.78`. Specify `false` for latest. | `false`              |
 | `azcli_install_dir`             | Installation directory to put azure-cli virtual environments.                  | `$HOME/.virtualenvs` |
 | `azcli_current_dirname`         | Name for the currently active azure-cli Virtualenv.                            | azure-cli            |
+| `azcli_install_venv_helper`     | Install a venv helper to launch venv executables from a "bin" directory.       | `true`               |
+| `azcli_bin_dir`                 | "bin" directory to install venv-helpers to.                                    | `$HOME/bin`          |
 | `azcli_install_os_dependencies` | Allow role to install OS dependencies.                                         | `false`              |
 | `azcli_python3_path`            | Specify a path to a specific python version to use in virtualenv.              | _NULL_               |
 
@@ -63,6 +65,7 @@ Example playbook for installing the latest azure-cli version globally:
   vars:
     azcli_install_os_dependencies: true
     azcli_install_dir: /opt/azure-cli/bin
+    azcli_bin_dir: /usr/bin
     azcli_current_dirname: current
   roles:
     - role: xanmanning.azurecli
