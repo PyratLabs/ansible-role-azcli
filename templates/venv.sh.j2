@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-source "{{ azcli_install_dir }}/{{ azcli_current_dirname }}/bin/activate"
+source "{{ azcli_install_dir }}/{{ azcli_venv_name }}/bin/activate"
 
-{{ azcli_install_dir }}/{{ azcli_current_dirname }}/bin/{{ item }} $@
+{{ azcli_install_dir }}/{{ azcli_venv_name }}/bin/{{ item }} $@
 
 deactivate

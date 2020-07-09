@@ -6,8 +6,11 @@ azcli_version: false
 # Installation directory to put azure-cli virtual environments.
 azcli_install_dir: "{{ ansible_user_dir }}/.virtualenvs"
 
-# Name for the currently active azure-cli Virtualenv.
-azcli_current_dirname: azure-cli
+# Name for the azure-cli Virtualenv.
+azcli_venv_name: azure-cli
+
+# Add a custom suffix to virtualenv (default: azcli_version)
+azcli_venv_suffix: false
 
 # Allow venv to inherit packages from global site-packages
 azcli_venv_site_packages: false

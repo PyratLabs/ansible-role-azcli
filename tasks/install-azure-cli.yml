@@ -1,5 +1,11 @@
 ---
 
+- name: Ensure the venv suffix is set
+  set_fact:
+    azcli_venv_suffix: "{{ azcli_version }}"
+  when: azcli_venv_suffix is not defined
+        or not azcli_venv_suffix
+
 - name: Ensure the azure-cli install directory exists
   file:
     path: "{{ azcli_install_dir }}"
@@ -21,7 +27,7 @@
     name: azure-cli
     version: "{{ azcli_version }}"
     state: present
-    virtualenv: "{{ azcli_install_dir }}/azure-cli-{{ azcli_version }}"
+    virtualenv: "{{ azcli_install_dir }}/{{ azcli_venv_name }}-{{ azcli_venv_suffix }}"
     virtualenv_command: "{{ azcli_python3_path }} -m venv"
     virtualenv_site_packages: "{{ azcli_venv_site_packages | default(False) }}"
 
@@ -32,14 +38,14 @@
 
 - name: Ensure the current release is symlinked in the install directory
   file:
-    src: "{{ azcli_install_dir }}/azure-cli-{{ azcli_version }}"
-    dest: "{{ azcli_install_dir }}/{{ azcli_current_dirname }}"
+    src: "{{ azcli_install_dir }}/{{ azcli_venv_name }}-{{ azcli_venv_suffix }}"
+    dest: "{{ azcli_install_dir }}/{{ azcli_venv_name }}"
     state: link
 
 - name: Ensure venv wrapper exists in virtualenv bin directory
   template:
     src: venv.sh.j2
-    dest: "{{ azcli_install_dir }}/azure-cli-{{ azcli_version }}/bin/venv"
+    dest: "{{ azcli_install_dir }}/{{ azcli_venv_name }}-{{ azcli_venv_suffix }}/bin/venv"
     mode: 0755
   loop:
     - python

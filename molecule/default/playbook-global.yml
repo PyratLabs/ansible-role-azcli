@@ -6,6 +6,6 @@
     azcli_install_os_dependencies: true
     azcli_install_dir: /opt/azure-cli/bin
     azcli_bin_dir: /usr/bin
-    azcli_current_dirname: current
+    azcli_venv_name: current
   roles:
     - role: xanmanning.azurecli

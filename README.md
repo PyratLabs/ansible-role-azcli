@@ -36,7 +36,8 @@ my spare time so I cannot promise a speedy fix delivery.
 |---------------------------------|--------------------------------------------------------------------------------|----------------------|
 | `azcli_version`                 | Use a specific version of azure-cli, eg. `2.0.78`. Specify `false` for latest. | `false`              |
 | `azcli_install_dir`             | Installation directory to put azure-cli virtual environments.                  | `$HOME/.virtualenvs` |
-| `azcli_current_dirname`         | Name for the currently active azure-cli Virtualenv.                            | azure-cli            |
+| `azcli_venv_name`               | Name for the azure-cli Virtualenv.                                             | azure-cli            |
+| `azcli_venv_suffix`             | Add a custom suffix to virtualenv.                                             | `azcli_version`      |
 | `azcli_venv_site_packages`      | Allow venv to inherit packages from global site-packages.                      | `false`              |
 | `azcli_install_venv_helper`     | Install a venv helper to launch venv executables from a "bin" directory.       | `true`               |
 | `azcli_bin_dir`                 | "bin" directory to install venv-helpers to.                                    | `$HOME/bin`          |
@@ -67,7 +68,7 @@ Example playbook for installing the latest azure-cli version globally:
     azcli_install_os_dependencies: true
     azcli_install_dir: /opt/azure-cli/bin
     azcli_bin_dir: /usr/bin
-    azcli_current_dirname: current
+    azcli_venv_name: current
   roles:
     - role: xanmanning.azurecli
 ```
@@ -78,7 +79,7 @@ You need to activate the python3 virtual environment to be able to access `az`.
 This is done as per the below:
 
 ```bash
-source {{ azure_install_dir }}/{{ azure_current_dirname }}/bin/activate
+source {{ azure_install_dir }}/{{ azcli_venv_name }}/bin/activate
 ```
 
 In the above example global installation playbook, this would look like the
